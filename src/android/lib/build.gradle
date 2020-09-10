@@ -39,7 +39,7 @@ android {
 
 // Aqui você adicionar todos as bibliotecas externas que o plugin possa vir a utilizar
 dependencies {
-    //implementation("com.fyusion.sdk:fyusesdk:2020.3.1")
+    implementation("com.fyusion.sdk:fyusesdk:2020.3.1")
     implementation("com.fyusion.sdk:fyusesdk-ext-car-mode-flow:2020.3.1")
 }
 
