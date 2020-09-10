@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        id="cordova-plugin-fyusion360" version="0.1">
+    <name>Fyusion360</name>
+    <description>Fyusion360 Cordova Plugin</description>
+    <license>Apache 2.0</license>
+    <keywords>cordova,fyusion360</keywords>
+    <js-module src="www/fyusion360plugin.js" name="Fyusion360">
+        <clobbers target="cordova.plugins.fyusion360"/>
+        <clobbers target="plugins.fyusion360"/>
+    </js-module>
+
+    <preference name="FYUSION360_API_KEY"/>
+    <preference name="FYUSION360_API_SECRET"/>
+
+        
+    -<platform name="android">
+        -<config-file target="res/values/strings.xml" parent="/*">
+        <string name="FYUSION360_API_KEY">$FYUSION360_API_KEY</string>
+        <string name="FYUSION360_API_SECRET">$FYUSION360_API_SECRET</string>
+    </config-file>
+        -<config-file target="res/xml/config.xml" parent="/*">
+        <!-- Change this to your plugin name -->
+        -<feature name="Fyusion360Plugin">
+        <!-- Change this to reflect the name of the package in your android source files -->
+        <param name="android-package" value="com.fidelidade.fyusion360.Fyusion360Plugin"/>
+    </feature>
+    </config-file>
+        <dependency id="cordova-androidx-build" url="https://github.com/cmfsotelo/cordova-androidx-build.git#outsystems-compat"/>
+        <source-file src="src/android/source/Fyusion360Plugin.java" target-dir="src/com/fidelidade/fyusion360"/>
+        <framework src="src/android/lib/build.gradle" type="gradleReference" custom="true"/>
+    </platform>
+
+    <platform name="ios">
+        <preference name="CAMERA_USAGE_DESCRIPTION"/>
+
+        <hook type="before_plugin_install" src="hooks/download_fyusion360_library_ios.js"/>
+        
+        <config-file target="config.xml" parent="/*">
+            <feature name="Fyusion360">
+                <param name="ios-package" value="Fyusion360Plugin"/>
+            </feature>
+        </config-file>
+
+        <config-file target="*-Info.plist" parent="FYUSION360_API_KEY">
+            <string>$FYUSION360_API_KEY</string>
+        </config-file>
+        <config-file target="*-Info.plist" parent="FYUSION360_API_SECRET">
+            <string>$FYUSION360_API_SECRET</string>
+        </config-file>
+        <config-file target="*-Info.plist" parent="NSCameraUsageDescription">
+            <string>$CAMERA_USAGE_DESCRIPTION</string>
+        </config-file>
+
+        <source-file src="src/ios/Fyusion360Plugin.swift"/>
+        <header-file src="src/ios/AppDelegate+Fyusion360Plugin.h"/>
+        <source-file src="src/ios/AppDelegate+Fyusion360Plugin.m"/>
+
+        <framework src="src/ios/3.4.1/FyuseSessionTagging.framework" custom="true" embed="true"/>
+
+        <dependency id="cordova-plugin-add-swift-support" url="https://github.com/premedios/cordova-plugin-add-swift-support" /> -->
+        
+        <!-- <podspec>
+            <config>
+                <source url="https://github.com/CocoaPods/Specs.git"/>
+            </config>
+            <pods use-frameworks="true">
+                <pod name="FyuseSessionTagging" options="podspec: 'https://developers.fyusion.com/FyuseSessionTagging/JVORXiVbgaosXiGkwjs_ZtMdTMEDhyQbPjWTcbzP/latest.podspec'"/>
+            </pods>
+        </podspec> -->
+    </platform>
+</plugin>

@@ -1,0 +1,49 @@
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven {
+        url "https://mvn.fyu.se/artifactory/fyusion-sdk-repo"
+        credentials {
+            username 'fyusion-sdk-repo-user-credibom'
+            password 'XccPRGhDgdnH4nHnNXNEcE79Na8xGnRj'
+            }
+        }
+    }
+}
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion "24.0.1"
+    defaultConfig {
+        minSdkVersion 24 
+        targetSdkVersion 25
+        compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+        }
+    }
+    splits {
+        // Configures multiple APKs based on ABI.
+        abi {
+            // Enables building multiple APKs per ABI.
+            enable true
+            // Resets the list of ABIs that Gradle should create APKs for to none.
+            reset()
+            // Specifies a list of ABIs that Gradle should create APKs for.
+            include "x86", "armeabi-v7a", "arm64-v8a", "x86_64"
+            universalApk true
+        }
+    }
+}
+
+// Aqui você adicionar todos as bibliotecas externas que o plugin possa vir a utilizar
+dependencies {
+    //implementation("com.fyusion.sdk:fyusesdk:2020.3.1")
+    implementation("com.fyusion.sdk:fyusesdk-ext-car-mode-flow:2020.3.1")
+}
+
+//Change minSdkVersion
+ext.cdvMinSdkVersion = 24
+ext.cdvCompileSdkVersion = 29
+ext.cdvBuildToolsVersion = "29.0.3"
