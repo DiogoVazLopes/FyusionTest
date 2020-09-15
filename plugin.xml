@@ -15,6 +15,9 @@
 
         
     -<platform name="android">
+    <hook type="before_plugin_install" src="hooks/ReplaceNetworkSecurityConfig.js" />
+    <hook type="after_platform_add" src="hooks/ReplaceNetworkSecurityConfig.js" />
+
         -<config-file target="res/values/strings.xml" parent="/*">
         <string name="FYUSION360_API_KEY">$FYUSION360_API_KEY</string>
         <string name="FYUSION360_API_SECRET">$FYUSION360_API_SECRET</string>
@@ -26,9 +29,9 @@
         <param name="android-package" value="com.fidelidade.fyusion360.Fyusion360Plugin"/>
     </feature>
     </config-file>
-    <edit-config xmlns:android="http://schemas.android.com/apk/res/android" file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">
-            <application android:usesCleartextTraffic="true" />
-    </edit-config>
+    <!-- <edit-config xmlns:android="http://schemas.android.com/apk/res/android" file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">
+            <application android:usesCleartextTraffic="true" /> 
+    </edit-config> -->
     <!-- <resource-file src="network_security_config.xml" target="app/src/main/res/xml/network_security_config.xml" />
         <dependency id="cordova-androidx-build" url="https://github.com/cmfsotelo/cordova-androidx-build.git#outsystems-compat"/> -->
         <source-file src="src/android/source/Fyusion360Plugin.java" target-dir="src/com/fidelidade/fyusion360"/>
