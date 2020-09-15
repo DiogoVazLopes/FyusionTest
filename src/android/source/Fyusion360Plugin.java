@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.app.fyusion.BuildConfig;
+//import com.app.fyusion.BuildConfig;
 import com.fyusion.sdk.common.FyuseSDKException;
 import com.fyusion.sdk.ext.carmodeflow.CarSession;
 import com.fyusion.sdk.ext.carmodeflow.CarSessionNavActivity;
