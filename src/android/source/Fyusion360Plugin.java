@@ -106,7 +106,6 @@ public class Fyusion360Plugin extends CordovaPlugin {
     private void startCaptureSession() {
 
         try {
-            FyuseSDK.init(this.cordova.getActivity().getApplicationContext(),"ooljHBOWhC_PrxjVXYvmZf","PGBeHBfhCpMTjMQYZhEOHRQDlGyZysEY");
             CarSession.init(this.cordova.getContext())
                     .withTaggingFlow(true)
                     .startForResult(REQUEST_CODE);
@@ -120,9 +119,20 @@ public class Fyusion360Plugin extends CordovaPlugin {
 
     private void initFyuse() {
         try {
-            FyuseSDK.init(this.cordova.getActivity().getApplicationContext(), "ooljHBOWhC_PrxjVXYvmZf", "PGBeHBfhCpMTjMQYZhEOHRQDlGyZysEY");
-            Log.i(TAG, "initFyuse success");
-            callbackContext.success("OK");
+            FyuseSDK.init(this.cordova.getActivity().getApplicationContext(), "ooljHBOWhC_PrxjVXYvmZf", "PGBeHBfhCpMTjMQYZhEOHRQDlGyZysEY"){
+                @Override
+                public void onSuccess() {
+                    Log.i(TAG, "initFyuse success");
+                    callbackContext.success("OK");
+                }
+
+                @Override
+                public void onFailure(String message) {
+                    Log.e(TAG, "message: " + message);
+                    callbackContext.error(message);
+                }
+            });
+
         } catch (Exception e) {
             Log.e(TAG, "message: " + e.toString());
             callbackContext.error(e.toString());
