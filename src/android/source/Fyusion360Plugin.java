@@ -119,23 +119,13 @@ public class Fyusion360Plugin extends CordovaPlugin {
 
     private void initFyuse() {
         try {
-            FyuseSDK.init(this.cordova.getActivity().getApplicationContext(), "ooljHBOWhC_PrxjVXYvmZf", "PGBeHBfhCpMTjMQYZhEOHRQDlGyZysEY"){
-                @Override
-                public void onSuccess() {
-                    Log.i(TAG, "initFyuse success");
-                    callbackContext.success("OK");
-                }
-
-                @Override
-                public void onFailure(String message) {
-                    Log.e(TAG, "message: " + message);
-                    callbackContext.error(message);
-                }
-            });
+            FyuseSDK.init(this.cordova.getActivity().getApplicationContext(), "ooljHBOWhC_PrxjVXYvmZf", "PGBeHBfhCpMTjMQYZhEOHRQDlGyZysEY");
+            Log.i(TAG, "initFyuse success");
+            callbackContext.success("OK");
 
         } catch (Exception e) {
             Log.e(TAG, "message: " + e.toString());
-            callbackContext.error(e.toString());
+            callbackContext.error("Error:" e.toString());
         }
     }
 
