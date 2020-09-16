@@ -125,7 +125,7 @@ public class Fyusion360Plugin extends CordovaPlugin {
 
         } catch (Exception e) {
             Log.e(TAG, "message: " + e.toString());
-            callbackContext.error("Error:" e.toString());
+            callbackContext.error("Error:" + e.toString());
         }
     }
 
