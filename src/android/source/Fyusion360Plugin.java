@@ -104,14 +104,29 @@ public class Fyusion360Plugin extends CordovaPlugin {
      * Start capture session
      */
     private void startCaptureSession() {
-        FyuseSDK.init(this.cordova.getActivity().getApplicationContext(),"ooljHBOWhC_PrxjVXYvmZf","PGBeHBfhCpMTjMQYZhEOHRQDlGyZysEY");
-        CarSession.init(this.cordova.getContext())
-                .withTaggingFlow(true)
-                .startForResult(REQUEST_CODE);
+
+        try {
+            FyuseSDK.init(this.cordova.getActivity().getApplicationContext(),"ooljHBOWhC_PrxjVXYvmZf","PGBeHBfhCpMTjMQYZhEOHRQDlGyZysEY");
+            CarSession.init(this.cordova.getContext())
+                    .withTaggingFlow(true)
+                    .startForResult(REQUEST_CODE);
+            Log.i(TAG, "StartCaptureSession success");
+            callbackContext.success("OK");
+        } catch (Exception e) {
+            Log.e(TAG, "message: " + e.toString());
+            callbackContext.error(e.toString());
+        }
     }
 
-    private void initFyuse(){
-        FyuseSDK.init(this.cordova.getActivity().getApplicationContext(),"ooljHBOWhC_PrxjVXYvmZf","PGBeHBfhCpMTjMQYZhEOHRQDlGyZysEY");
+    private void initFyuse() {
+        try {
+            FyuseSDK.init(this.cordova.getActivity().getApplicationContext(), "ooljHBOWhC_PrxjVXYvmZf", "PGBeHBfhCpMTjMQYZhEOHRQDlGyZysEY");
+            Log.i(TAG, "initFyuse success");
+            callbackContext.success("OK");
+        } catch (Exception e) {
+            Log.e(TAG, "message: " + e.toString());
+            callbackContext.error(e.toString());
+        }
     }
 
 
