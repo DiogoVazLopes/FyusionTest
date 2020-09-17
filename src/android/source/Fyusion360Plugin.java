@@ -112,8 +112,9 @@ public class Fyusion360Plugin extends CordovaPlugin {
             Log.i(TAG, "StartCaptureSession success");
             callbackContext.success("OK");
         } catch (Exception e) {
-            Log.e(TAG, "message: " + e.toString());
-            callbackContext.error(e.toString());
+            String messageExeception= e.getMessage();
+            Log.e(TAG, "message: " + messageExeception);
+            callbackContext.error(messageExeception);
         }
     }
 
@@ -124,8 +125,9 @@ public class Fyusion360Plugin extends CordovaPlugin {
             callbackContext.success("OK");
 
         } catch (Exception e) {
-            Log.e(TAG, "message: " + e.toString());
-            callbackContext.error("Error:" + e.toString());
+            String messageExeception= e.getMessage();
+            Log.e(TAG, "message: " + messageExeception);
+            callbackContext.error(messageExeception);
         }
     }
 
